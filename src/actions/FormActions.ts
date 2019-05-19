@@ -16,7 +16,7 @@ export const androidDateChanged = () => {
         try {
             const {
               action, year, month, day,
-            } = await DatePickerAndroid.open({
+            } : any = await DatePickerAndroid.open({
             date: new Date(),
             minDate: new Date(),
             });
@@ -36,7 +36,7 @@ let chosenAndroidTime: String
 export const androidTimeChanged = () => {
     return async (dispatch: DispatchType) => {
         try {
-            const { action, hour, minute } = await TimePickerAndroid.open({
+            const { action, hour, minute }: any = await TimePickerAndroid.open({
               hour: 14,
               minute: 0,
               is24Hour: false, // Will display '2 PM'

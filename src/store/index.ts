@@ -13,6 +13,6 @@ const store = createStore(
   )
 );
 
-persistStore(store, { storage: AsyncStorage, whitelist: ['list'] });
+persistStore(store, { storage: AsyncStorage, whitelist: ['list'] } as any);
 
 export default store;
