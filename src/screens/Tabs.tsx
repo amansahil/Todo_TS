@@ -10,9 +10,7 @@ import AddScreen from './AddScreen';
 import LogoutScreen from './LogoutScreen';
 import AuthLoadingScreen from './AuthLoadingScreen'
   
-
-  //const AppStack = createBottomTabNavigator({ Todo: ListScreen, Add: AddScreen, Profile: LogoutScreen })
-  const AppStack = createBottomTabNavigator({ Todo: ListScreen, Add: AddScreen, Profile: LogoutScreen },   {
+  const AppStack = createBottomTabNavigator({ Todo: ListScreen, Add: AddScreen, Profile: LogoutScreen },{
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
@@ -31,9 +29,6 @@ import AuthLoadingScreen from './AuthLoadingScreen'
                 style={{ height: 35, width: 35, tintColor: tintColor } as ImageStyle}
                 source={iconName}
               />;
-        // You can return any component that you like here!
-
-        //return <IconComponent name={iconName} size={25} color={tintColor} />;
       },
     }),
     tabBarOptions: {
@@ -42,10 +37,10 @@ import AuthLoadingScreen from './AuthLoadingScreen'
       showLabel: false
     },
   }
-    );
+  );
+
   const AuthStack = createStackNavigator({ LoginScreen: LoginScreen});
   
-
   export default createAppContainer(createSwitchNavigator(
     {
       AuthLoading: AuthLoadingScreen,
