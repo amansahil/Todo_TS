@@ -18,10 +18,7 @@ interface NavProps {
   navigation: any
 }
 
-interface State {
-}
-
-class LoginScreen extends Component<Props & ActionProps & NavProps, State>{
+class LoginScreen extends Component<Props & ActionProps & NavProps>{
 
   static navigationOptions = {
     header: null,
