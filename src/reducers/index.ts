@@ -1,10 +1,10 @@
-import { combineReducers } from 'redux';
+import { combineReducers, Reducer } from 'redux';
 import AuthReducer from './AuthReducers';
 import FormReducer from './FormReducers';
 import ListReducer from './ListReducers'
 
 export default combineReducers({
-  auth: AuthReducer,
-  form: FormReducer,
-  list: ListReducer
+  auth: AuthReducer as Reducer,
+  form: FormReducer as Reducer,
+  list: ListReducer as Reducer
 });
