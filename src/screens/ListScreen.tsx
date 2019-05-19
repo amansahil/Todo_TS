@@ -33,7 +33,6 @@ class ListScreen extends Component<Props & ActionProps, State>{
   }
 
   delete() {
-
     let newObj: Array<taskType>
 
     newObj = this.props.taskObj
@@ -52,7 +51,6 @@ class ListScreen extends Component<Props & ActionProps, State>{
   }
 
   markDone = (arg: string) => {
-
     let newObj: Array<taskType>
 
     newObj = this.props.taskObj
@@ -66,7 +64,6 @@ class ListScreen extends Component<Props & ActionProps, State>{
   }
 
   update(newObj: Array<taskType>) {
-
     this.props.clearItems();
 
     newObj.map((data) => {
