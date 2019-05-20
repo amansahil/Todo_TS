@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, FlatList, ViewStyle } from 'react-native';
+import {StyleSheet, View, FlatList, ViewStyle, Task } from 'react-native';
 import { connect } from 'react-redux';
 
 import { submitForm, clearItems } from '../actions'
 import { Header, ListItem, Confirm } from '../components'
-import { taskType } from '../lib/types';
+import { TaskType } from '../lib/types';
 
 interface ActionProps {
   clearItems: typeof clearItems,
@@ -12,7 +12,7 @@ interface ActionProps {
 }
 
 interface Props {
-  taskObj: Array<taskType>,
+  taskObj: TaskType[],
   style: ViewStyle
 }
 
@@ -26,6 +26,10 @@ class ListScreen extends Component<Props & ActionProps, State>{
   constructor(props: Props & ActionProps) {
     super(props);
     this.state = { showModal: false, modalAction: '' };
+    this.confirmAction = this.confirmAction.bind(this)
+    this.markDone = this.markDone.bind(this)
+    this.delete = this.delete.bind(this)
+    this.hideModal = this.hideModal.bind(this)
   }
 
   confirmAction = (arg: string) => {
@@ -33,11 +37,11 @@ class ListScreen extends Component<Props & ActionProps, State>{
   }
 
   delete() {
-    let newObj: Array<taskType>
+    let newObj: TaskType[]
 
     newObj = this.props.taskObj
 
-    var removeIndex = newObj.map(function(item) { return item.key; })
+    const removeIndex = newObj.map((item) =>  item.key )
                        .indexOf(this.state.modalAction);
     ~removeIndex && newObj.splice(removeIndex, 1);
 
@@ -51,11 +55,11 @@ class ListScreen extends Component<Props & ActionProps, State>{
   }
 
   markDone = (arg: string) => {
-    let newObj: Array<taskType>
+    let newObj: TaskType[]
 
     newObj = this.props.taskObj
-    newObj.forEach(function(obj) {
-      if(obj.key == arg) {
+    newObj.forEach((obj) => {
+      if(obj.key === arg) {
         obj.done = !obj.done;
       }
     })   
@@ -63,7 +67,7 @@ class ListScreen extends Component<Props & ActionProps, State>{
     this.update(newObj.reverse());
   }
 
-  update(newObj: Array<taskType>) {
+  update(newObj: TaskType[]) {
     this.props.clearItems();
 
     newObj.map((data) => {
@@ -71,12 +75,12 @@ class ListScreen extends Component<Props & ActionProps, State>{
     })
   }
 
-  renderItem(item: taskType) {
+  renderItem(item: TaskType) {
     return (
       <ListItem
         data={item}
-        delete={this.confirmAction.bind(this)}
-        markDone={this.markDone.bind(this)}
+        delete={this.confirmAction}
+        markDone={this.markDone}
       />
     );
   }
@@ -93,8 +97,8 @@ class ListScreen extends Component<Props & ActionProps, State>{
 
         <Confirm
           visible={this.state.showModal}
-          onAccept={this.delete.bind(this)}
-          onDecline={this.hideModal.bind(this)}
+          onAccept={this.delete}
+          onDecline={this.hideModal}
         >
           Are you sure you want to delete this ?
         </Confirm>

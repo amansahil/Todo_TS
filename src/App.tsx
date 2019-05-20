@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import Tabs from './screens/Tabs'
 import store from './store';
 
-export default class App extends Component{
+class App extends Component{
   render() {
     return (
       <Provider store={store}>
@@ -13,3 +13,5 @@ export default class App extends Component{
     );
   }
 }
+
+export default App;

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React  from 'react';
 import { createBottomTabNavigator, createAppContainer, createSwitchNavigator, createStackNavigator } from 'react-navigation';
 import { Image, ImageStyle
 } from 'react-native';
@@ -26,7 +26,7 @@ import AuthLoadingScreen from './AuthLoadingScreen'
         }
 
         return <Image
-                style={{ height: 35, width: 35, tintColor: tintColor } as ImageStyle}
+                style={{ height: 35, width: 35, tintColor } as ImageStyle}
                 source={iconName}
               />;
       },
@@ -39,7 +39,7 @@ import AuthLoadingScreen from './AuthLoadingScreen'
   }
   );
 
-  const AuthStack = createStackNavigator({ LoginScreen: LoginScreen});
+  const AuthStack = createStackNavigator({ LoginScreen });
   
   export default createAppContainer(createSwitchNavigator(
     {

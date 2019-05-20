@@ -10,7 +10,7 @@ interface NavProps {
   navigation: any
 }
 
-class AuthLoadingScreen extends React.Component<NavProps> {
+class AuthLoadingScreen extends Component<NavProps> {
     constructor(props: NavProps) {
       super(props);
       this._bootstrapAsync();

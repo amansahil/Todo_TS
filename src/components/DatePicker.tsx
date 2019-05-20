@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Modal, DatePickerIOS, Platform, TouchableOpacity, ViewStyle } from 'react-native';
+import { Text, View, Modal, DatePickerIOS, Platform, ViewStyle } from 'react-native';
 import { Sections } from './Sections';
 import { Button } from './Button';
 

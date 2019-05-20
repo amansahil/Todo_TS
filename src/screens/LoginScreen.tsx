@@ -20,6 +20,11 @@ interface NavProps {
 
 class LoginScreen extends Component<Props & ActionProps & NavProps>{
 
+  constructor(props: Props & ActionProps & NavProps) {
+    super(props);
+    this.onButtonPress = this.onButtonPress.bind(this)
+  }
+
   static navigationOptions = {
     header: null,
   };
@@ -45,7 +50,7 @@ class LoginScreen extends Component<Props & ActionProps & NavProps>{
             value={this.props.name}
             onChangeText={(text: string) => this.props.nameChanged(text)}
           />
-          <Button onPress={this.onButtonPress.bind(this)} >
+          <Button onPress={this.onButtonPress} >
             Sign In
           </Button>
         </View>

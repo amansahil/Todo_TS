@@ -1,5 +1,5 @@
-import React, { Children } from 'react';
-import { Text, TouchableOpacity, TextStyle} from 'react-native';
+import React from 'react';
+import { Text, TouchableOpacity } from 'react-native';
 
 interface Props {
   onPress: any, 

@@ -1,6 +1,5 @@
 import React from 'react';
-import { TextInput, View, Text, ViewStyle } from 'react-native';
-import { placeholder } from '@babel/types';
+import { TextInput, ViewStyle } from 'react-native';
 
 interface Props {
   value: string,

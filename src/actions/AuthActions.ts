@@ -1,18 +1,18 @@
 import { AsyncStorage } from 'react-native';
 import { DispatchType } from '../lib/types'
 
-interface formResult {
+interface FormResult {
     name: string
 }
 
-export const nameChanged = (text: String) => {
+export const nameChanged = (text: string) => {
     return {
         type: 'name_changed',
         payload: text
     }
 }
 
-export const loginUser = ({name}: formResult) => {
+export const loginUser = ({name}: FormResult) => {
     return async (dispatch: DispatchType) => {
       await AsyncStorage.setItem('userToken', name );
       dispatch({ type: 'login_user', payload: name });

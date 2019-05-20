@@ -24,6 +24,7 @@ class LogoutScreen extends Component<Props & ActionProps & NavProps>{
   constructor(props: Props & ActionProps & NavProps) {
     super(props)
     this.props.getUserName()
+    this.onButtonPress = this.onButtonPress.bind(this)
   }
 
   onButtonPress() {
@@ -39,7 +40,7 @@ class LogoutScreen extends Component<Props & ActionProps & NavProps>{
         <Header headerText={`Hi, ${this.props.userName}`} />
         <View style={styles.container}>
           <View style={styles.bottomView} >
-            <Button style={styles.buttonStyle} fontStyle={styles.textStyle} onPress={this.onButtonPress.bind(this)}>
+            <Button style={styles.buttonStyle} fontStyle={styles.textStyle} onPress={this.onButtonPress}>
               Logout
             </Button>
           </View>

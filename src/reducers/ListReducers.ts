@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { REHYDRATE } from 'redux-persist/constants';
 
-import { taskType } from '../lib/types';
+import { TaskType } from '../lib/types';
 
 
 interface Hydrate {
@@ -11,11 +11,11 @@ interface Hydrate {
 
 interface ClearItems {
   type: 'clear_items';
-  payload: Array<null>
+  payload: null[]
 }
 interface AddItem {
   type: 'add_item';
-  payload: taskType
+  payload: TaskType
 }
 
 type Action = Hydrate | ClearItems | AddItem

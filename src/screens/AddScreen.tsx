@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { iosDateTimeChanged, androidDateChanged, androidTimeChanged, taskChanged, submitForm } from '../actions';
 import { Input, Button, Header, MultiLineInput, DatePicker } from '../components'
 import ColorButtons from '../components/ColorButtons'
-import { DispatchType, taskType } from '../lib/types';
+import { TaskType } from '../lib/types';
 
 interface ActionProps {
   iosDateTimeChanged: typeof iosDateTimeChanged,
@@ -33,6 +33,9 @@ class AddScreen extends Component<Props & ActionProps, State>{
     super(props);
     this.state = { showModal: false };
     this.setDate = this.setDate.bind(this);
+    this.submitForm = this.submitForm.bind(this);
+    this.setDateAndroid = this.setDateAndroid.bind(this)
+    this.setTimeAndroid = this.setTimeAndroid.bind(this)
   }
 
   setDate(newDate: Date) {
@@ -48,7 +51,7 @@ class AddScreen extends Component<Props & ActionProps, State>{
   }
 
   submitForm() {
-    let itemObject: taskType
+    let itemObject: TaskType
     itemObject = {
       key: `${Math.floor(Math.random() * 9999)}`,
       date: Platform.OS === 'ios' ? `${this.props.chosenDate.toDateString()}  ${this.props.chosenDate.toLocaleTimeString()}`: `${this.props.androidDate}  ${this.props.chosenAndroidTime}`,
@@ -95,7 +98,7 @@ class AddScreen extends Component<Props & ActionProps, State>{
           <View style = {{ flexDirection: 'row', alignSelf: 'center' }}>
             <ColorButtons colors = {colors}/>
           </View>
-          <Button onPress={this.submitForm.bind(this)} >
+          <Button onPress={this.submitForm} >
             Add
           </Button>
           <DatePicker
@@ -103,12 +106,11 @@ class AddScreen extends Component<Props & ActionProps, State>{
             onAccept={() => this.setState({ showModal: false })}
             date={this.props.chosenDate}
             onDateChange={this.setDate}
-            setDateAndroid={this.setDateAndroid.bind(this)}
-            setTimeAndroid={this.setTimeAndroid.bind(this)}
+            setDateAndroid={this.setDateAndroid}
+            setTimeAndroid={this.setTimeAndroid}
             chosenAndroidTime={this.props.chosenAndroidTime}
             androidDate={this.props.androidDate}
-          >
-          </DatePicker>
+          />
         </View>
       </View>
     );

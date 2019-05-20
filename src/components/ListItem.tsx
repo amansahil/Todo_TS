@@ -1,7 +1,7 @@
 import React, { Component } from 'React'
 import {StyleSheet, View, Text, Animated, PanResponder, Dimensions} from 'react-native';
 
-import { taskType } from '../lib/types';
+import { TaskType } from '../lib/types';
 
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -10,7 +10,7 @@ const SWIPE_THRESHOLD = 0.25 * SCREEN_WIDTH;
 interface Props {
   delete: any,
   markDone: any,
-  data: taskType
+  data: TaskType
 }
 
 interface State {
@@ -65,7 +65,7 @@ class ListItem extends Component<Props, State> {
     }).start();
   }
 
-  buttonStyle = function(options: string) {
+  buttonStyle = (options: string) => {
     return {
       margin: 10,
       width: 20,

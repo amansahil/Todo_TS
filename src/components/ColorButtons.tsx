@@ -16,7 +16,7 @@ interface Props {
   radioSelected: string
 }
 interface InjectedProps {
-  colors: Array<Colors>
+  colors: Colors[]
 }
 
 class ColorButtons extends Component<Props & ActionsProps & InjectedProps> {
@@ -53,8 +53,7 @@ class ColorButtons extends Component<Props & ActionsProps & InjectedProps> {
       return (
         this.props.colors.map((val: Colors) => {
           return (
-            <TouchableWithoutFeedback style={this.buttonStyle(val.id)} onPress={this.radioClick.bind(this, val.id)} key={val.id} >
-            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback style={this.buttonStyle(val.id)} onPress={this.radioClick.bind(this, val.id)} key={val.id} />
           );
         })
       );
