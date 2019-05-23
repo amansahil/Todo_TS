@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Image, AsyncStorage} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import { logoutUser, getUserName, clearItems  } from '../actions';
